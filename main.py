@@ -21,25 +21,20 @@ class Task:
         return [task for task in self.tasks if not task['completed']]
 
 
-# Пример использования:
 if __name__ == "__main__":
     my_tasks = Task()
 
-    # Добавляем новые задачи
     my_tasks.add_task("Написать статью", date.today())
     my_tasks.add_task("Посмотреть фильм")
     my_tasks.add_task("Прочитать книгу", date(2025, 8, 1))
 
-    # Проверяем список активных задач
     print("Активные задачи:")
     active_tasks = my_tasks.get_active_tasks()
     for t in active_tasks:
         print(f"{t['description']} {'(' + str(t['due_date']) + ')' if t['due_date'] else ''}")
 
-    # Отмечаем одну задачу как выполненную
     my_tasks.mark_as_completed("Посмотреть фильм")
 
-    # Еще раз проверяем активные задачи
     print("\nАктивные задачи после завершения одной задачи:")
     active_tasks = my_tasks.get_active_tasks()
     for t in active_tasks:
