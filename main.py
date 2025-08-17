@@ -5,23 +5,18 @@ class Task:
     def __init__(self):
         self.tasks = []
 
-    # Добавление новой задачи
     def add_task(self, description, due_date=None):
-        new_task = {
-            'description': description,
-            'due_date': due_date if isinstance(due_date, date) else None,
+        new_task = {'description': description,'due_date': due_date if isinstance(due_date, date) else None,
             'completed': False
         }
         self.tasks.append(new_task)
 
-    # Отметка задачи как выполненной
     def mark_as_completed(self, task_description):
         for task in self.tasks:
             if task['description'] == task_description:
                 task['completed'] = True
                 break
 
-    # Получение списка активных (невыполненных) задач
     def get_active_tasks(self):
         return [task for task in self.tasks if not task['completed']]
 
